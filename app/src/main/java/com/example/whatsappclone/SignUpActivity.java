@@ -33,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         getSupportActionBar().hide();
 
@@ -54,12 +55,15 @@ public class SignUpActivity extends AppCompatActivity {
                                         binding.txtEmail.getText().toString(),
                                         binding.txtPassword.getText().toString());
 
+                                String id = task.getResult().getUser().getUid();
+                                database.getReference().child("Users").child(id).setValue(user);
+
 
 
 
                             }
                         }
-                    })
+                    });
                 }
                 else {
                     Toast.makeText(SignUpActivity.this, "Enter Credentials", Toast.LENGTH_SHORT).show();
