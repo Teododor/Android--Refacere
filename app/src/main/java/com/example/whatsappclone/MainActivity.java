@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.whatsappclone.Adapter.FragmentsAdapter;
 import com.example.whatsappclone.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
+        binding.viewPager.setAdapter(new FragmentsAdapter(getSupportFragmentManager()));
+        binding.tabLayout.setupWithViewPager(binding.viewPager);
     }
-
 
 
     // cu asta fac meniul sa deruleze
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.settings:
                 Toast.makeText(this, "Setting is Clicked", Toast.LENGTH_SHORT).show();

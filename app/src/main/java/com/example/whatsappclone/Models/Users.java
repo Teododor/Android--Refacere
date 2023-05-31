@@ -3,7 +3,7 @@ package com.example.whatsappclone.Models;
 public class Users {
     String profilePic, userName, mail, password, userId, lastMessage, status;
 
-    public Users(){
+    public Users() {
 
     }
 
